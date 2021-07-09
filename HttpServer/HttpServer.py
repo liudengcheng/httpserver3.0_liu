@@ -39,8 +39,7 @@ class HTTPServer(object):
     # 　创建套接字
     def create_socket(self):
         self.sockfd = socket()
-        self.sockfd.setsockopt(SOL_SOCKET, \
-                               SO_REUSEADDR, DEBUG)
+        self.sockfd.setsockopt(SOL_SOCKET, SO_REUSEADDR, DEBUG)
 
     # 　绑定地址
     def bind(self):
@@ -55,8 +54,7 @@ class HTTPServer(object):
         while True:
             connfd, addr = self.sockfd.accept()
             print("Connect from", addr)
-            client = Thread(target=self.handle, \
-                            args=(connfd,))
+            client = Thread(target=self.handle, args=(connfd,))
             client.setDaemon(True)
             client.start()
 
